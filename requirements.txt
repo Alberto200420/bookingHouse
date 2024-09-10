@@ -1,0 +1,10 @@
+# Django - defautl
+Django==5.1.1
+djangorestframework==3.15.2
+# Authentication - defautl
+djoser==2.2.3
+django-cors-headers==4.4.0
+# Env tools
+python-dotenv==1.0.1
+# Images
+pillow==10.4.0
