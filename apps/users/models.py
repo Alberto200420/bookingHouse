@@ -1,5 +1,6 @@
 # Import necessary modules and classes from Django
 from django.db import models
+from apps.hotels.models import Hotel
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
 
 # Define a custom manager for the User model
@@ -44,13 +45,14 @@ class UserAccountManager(BaseUserManager):
 # Define the UserAccount model, inheriting from AbstractBaseUser and PermissionsMixin
 class UserAccount(AbstractBaseUser, PermissionsMixin):
   # Define fields for the UserAccount model
-  email =         models.EmailField(unique=True, max_length=70)
-  first_name =    models.CharField(max_length=40)
-  last_name =     models.CharField(max_length=40)
+  email =           models.EmailField(unique=True, max_length=70)
+  first_name =      models.CharField(max_length=40)
+  last_name =       models.CharField(max_length=40)
 
-  is_active =     models.BooleanField(default=True)
-  is_staff =      models.BooleanField(default=False)
-  is_superuser =  models.BooleanField(default=False)
+  is_active =       models.BooleanField(default=True)
+  is_staff =        models.BooleanField(default=False)
+  is_superuser =    models.BooleanField(default=False)
+  hotel_belonging = models.ForeignKey(Hotel, on_delete=models.DO_NOTHING, blank=True, null=True)
 
   # Use the custom manager for the User model
   objects = UserAccountManager()

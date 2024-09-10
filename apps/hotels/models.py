@@ -5,4 +5,4 @@ def logo_directory(instace, filename):
 
 class Hotel(models.Model):
   hotel_name = models.CharField(max_length=100, unique=True, editable=True)
-  logo = models.ImageField(upload_to=logo_directory)
+  logo =       models.ImageField(upload_to=logo_directory)
