@@ -52,7 +52,7 @@ class UserAccount(AbstractBaseUser, PermissionsMixin):
   is_active =       models.BooleanField(default=True)
   is_staff =        models.BooleanField(default=False)
   is_superuser =    models.BooleanField(default=False)
-  hotel_belonging = models.ForeignKey(Hotel, on_delete=models.DO_NOTHING, blank=True, null=True)
+  hotel_belonging = models.ForeignKey(Hotel, on_delete=models.DO_NOTHING, blank=True, null=True, related_name='users')
 
   # Use the custom manager for the User model
   objects = UserAccountManager()

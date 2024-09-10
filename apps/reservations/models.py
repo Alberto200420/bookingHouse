@@ -1,3 +1,26 @@
 from django.db import models
+import uuid
+from apps.serviceDirectory.models import Service
+from apps.users.models import UserAccount
 
-# Create your models here.
+class Reservation(models.Model):
+  STATUS_CHOICES = [
+    ('RESERVED', 'Reserved'),
+    ('CANCELLED', 'Cancelled'),
+    ('COMPLETED', 'Completed'),
+  ]
+
+  id =                models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+  service =           models.ForeignKey(Service, on_delete=models.CASCADE, related_name='reservations')
+  number_of_people =  models.PositiveSmallIntegerField()
+  status =            models.CharField(max_length=9, choices=STATUS_CHOICES, default='RESERVED')
+  reservation_name =  models.CharField(max_length=80)
+  booking_date =      models.DateTimeField()
+  length_of_stay =    models.DurationField()
+  user =              models.ForeignKey(UserAccount, on_delete=models.SET_NULL, null=True, related_name='services')
+
+  def __str__(self):
+    return f"Reservation for {self.reservation_name} - {self.service.title}"
+
+  class Meta:
+    ordering = ['-booking_date']

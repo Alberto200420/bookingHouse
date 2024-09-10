@@ -36,7 +36,8 @@ DJANGO_APPS = [
 PROJECT_APPS = [
   'apps.users',
   'apps.hotels',
-  'apps.serviceDirectory'
+  'apps.serviceDirectory',
+  'apps.reservations'
 ]
 
 THIRD_PARTY_APPS = [
