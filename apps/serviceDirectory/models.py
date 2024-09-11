@@ -9,7 +9,7 @@ def menu_service_directory(instace, filename):
   return 'service/{0}/menu/{1}'.format(instace.title, filename)
 
 def header_images_directory(instace, filename):
-  return 'service/{0}/{1}'.format(instace.service.title, filename)
+  return 'service/{0}/images/{1}'.format(instace.service.title, filename)
 
 class Category(models.Model):
   id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -23,7 +23,7 @@ class Service(models.Model):
   id =                  models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
   category =            models.ForeignKey(Category, on_delete=models.DO_NOTHING, related_name='category')
   title =               models.CharField(max_length=100)
-  menu =                models.FileField(upload_to=menu_service_directory)
+  menu =                models.FileField(upload_to=menu_service_directory, blank=True, null=True)
   header_image =        models.ImageField(upload_to=header_service_directory)
   description =         models.TextField()
   availabilities =      models.JSONField()
