@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from apps.reservations.models import Reservation
 from apps.serviceDirectory.models import Service
-from datetime import datetime
+from django.utils import timezone
 
 class ReservationCreateSerializer(serializers.ModelSerializer):
   service = serializers.UUIDField()  # Expecting service ID to be passed as a UUID
@@ -19,7 +19,7 @@ class ReservationCreateSerializer(serializers.ModelSerializer):
     return service
 
   def validate_booking_date(self, value):
-    if value < datetime.now():
+    if value < timezone.now():
       raise serializers.ValidationError("Booking date cannot be in the past.")
     return value
 
