@@ -1,7 +1,7 @@
 from django.db import models
 from apps.hotels.models import Hotel
 import uuid
-
+# Cambiar path para que se vea /nombre del hotel/service/etc
 def header_service_directory(instace, filename):
   return 'service/{0}/{1}'.format(instace.title, filename)
 
