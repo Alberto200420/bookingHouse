@@ -7,5 +7,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("v1/auth/", include('djoser.urls')),
     path("v1/auth/", include('djoser.urls.jwt')),
-    path("v1/directory/", include('apps.serviceDirectory.urls'))
+    path("v1/directory/", include('apps.serviceDirectory.urls')),
+    path("v1/reservations/", include('apps.reservations.urls'))
 ]
