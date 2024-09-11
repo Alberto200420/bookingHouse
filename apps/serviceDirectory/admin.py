@@ -9,6 +9,7 @@ class ImagesInline(admin.TabularInline):
 class CategoryAdmin(admin.ModelAdmin):
   list_display = ('category_name', 'hotel')
   list_filter = ('hotel',)
+  readonly_fields = ('id',)
   search_fields = ('category_name', 'hotel__hotel_name')
 
 @admin.register(Service)
@@ -16,6 +17,7 @@ class ServiceAdmin(admin.ModelAdmin):
   list_display = ('title', 'category', 'require_reservation', 'maximum_capacity')
   list_filter = ('category', 'require_reservation')
   search_fields = ('title', 'description')
+  readonly_fields = ('id',)
   inlines = [ImagesInline]
   fieldsets = (
     (None, {

@@ -7,6 +7,7 @@ class UserAccountAdmin(UserAdmin):
   list_display = ('email', 'first_name', 'last_name', 'is_active', 'is_staff', 'is_superuser', 'hotel_belonging')
   list_filter = ('is_active', 'is_staff', 'is_superuser', 'hotel_belonging')
   search_fields = ('email', 'first_name', 'last_name', 'hotel_belonging__hotel_name')
+  readonly_fields = ('id',)
   ordering = ('email',)
     
   fieldsets = (

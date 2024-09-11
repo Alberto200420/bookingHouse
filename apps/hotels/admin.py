@@ -5,3 +5,4 @@ from .models import Hotel
 class HotelAdmin(admin.ModelAdmin):
     list_display = ('hotel_name',)
     search_fields = ('hotel_name',)
+    readonly_fields = ('id',)
