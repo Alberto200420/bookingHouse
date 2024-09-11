@@ -16,7 +16,8 @@ class Reservation(models.Model):
   status =            models.CharField(max_length=9, choices=STATUS_CHOICES, default='RESERVED')
   reservation_name =  models.CharField(max_length=80)
   booking_date =      models.DateTimeField()
-  length_of_stay =    models.DurationField()
+  arrival_time =      models.TimeField(blank=True, null=True)
+  departure_time =    models.TimeField(blank=True, null=True)
   user =              models.ForeignKey(UserAccount, on_delete=models.SET_NULL, null=True, related_name='services')
 
   def __str__(self):
