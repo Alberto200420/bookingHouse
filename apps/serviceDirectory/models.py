@@ -8,6 +8,9 @@ def header_service_directory(instace, filename):
 def menu_service_directory(instace, filename):
   return 'service/{0}/menu/{1}'.format(instace.title, filename)
 
+def header_images_directory(instace, filename):
+  return 'service/{0}/{1}'.format(instace.service.title, filename)
+
 class Category(models.Model):
   id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
   hotel = models.ForeignKey(Hotel, on_delete=models.CASCADE, related_name='hotel')
@@ -34,7 +37,7 @@ class Service(models.Model):
 class Images(models.Model):
   service = models.ForeignKey(Service, on_delete=models.CASCADE, related_name='images')
   description = models.CharField(max_length=50)
-  image = models.ImageField(upload_to=header_service_directory)
+  image = models.ImageField(upload_to=header_images_directory)
 
   def __str__(self):
     return f"Image for {self.service.title}: {self.description}"
