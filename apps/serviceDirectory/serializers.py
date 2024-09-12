@@ -1,13 +1,21 @@
 from rest_framework import serializers
-from .models import Service, Category
+from .models import Service, Category, Images
 from datetime import datetime
 
+class ImagesSerializer(serializers.ModelSerializer):
+  class Meta:
+    model = Images
+    fields = ['description', 'image']
+
+
 class ServiceSerializer(serializers.ModelSerializer):
+  images = ImagesSerializer(many=True, read_only=True)  # Add the images field
+
   class Meta:
     model = Service
     fields = [
       'id', 'category', 'title', 'menu', 'header_image', 'description', 
-      'availabilities', 'requirement', 'require_reservation', 'maximum_capacity'
+      'availabilities', 'requirement', 'require_reservation', 'maximum_capacity', 'images',
     ]
 
 class TodayServiceSerializer(serializers.ModelSerializer):
