@@ -11,9 +11,13 @@ def menu_service_directory(instace, filename):
 def header_images_directory(instace, filename):
   return 'service/{0}/images/{1}'.format(instace.service.title, filename)
 
+def category_image_directory(instace, filename):
+  return 'logos/{0}/category/{1}'.format(instace.hotel.hotel_name, filename)
+
 class Category(models.Model):
-  id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-  hotel = models.ForeignKey(Hotel, on_delete=models.CASCADE, related_name='hotel')
+  id =            models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+  hotel =         models.ForeignKey(Hotel, on_delete=models.CASCADE, related_name='hotel')
+  image_display = models.ImageField(upload_to=category_image_directory)
   category_name = models.CharField(max_length=80)
 
   def __str__(self):
