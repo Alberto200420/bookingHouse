@@ -8,7 +8,7 @@ class ReservationCreateSerializer(serializers.ModelSerializer):
 
   class Meta:
     model = Reservation
-    fields = ['service', 'number_of_people', 'reservation_name', 'booking_date']
+    fields = ['service', 'number_of_people', 'booking_date']
 
   def validate_service(self, value):
     # Ensure the service exists

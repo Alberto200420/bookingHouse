@@ -14,14 +14,13 @@ class Reservation(models.Model):
   service =           models.ForeignKey(Service, on_delete=models.CASCADE, related_name='reservations')
   number_of_people =  models.PositiveSmallIntegerField()
   status =            models.CharField(max_length=9, choices=STATUS_CHOICES, default='RESERVED')
-  reservation_name =  models.CharField(max_length=80)
   booking_date =      models.DateTimeField()
   arrival_time =      models.TimeField(blank=True, null=True)
   departure_time =    models.TimeField(blank=True, null=True)
-  user =              models.ForeignKey(UserAccount, on_delete=models.SET_NULL, null=True, related_name='services')
+  user =              models.ForeignKey(UserAccount, on_delete=models.DO_NOTHING, related_name='services')
 
   def __str__(self):
-    return f"Reservation for {self.reservation_name} - {self.service.title}"
+    return f"Reservation for {self.user.first_name, self.user.last_name} - {self.service.title}"
 
   class Meta:
     ordering = ['-booking_date']

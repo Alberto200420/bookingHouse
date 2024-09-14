@@ -5,14 +5,14 @@ from apps.users.models import UserAccount
 
 @admin.register(Reservation)
 class ReservationAdmin(admin.ModelAdmin):
-  list_display = ('reservation_name', 'service', 'status', 'booking_date', 'number_of_people', 'arrival_time', 'departure_time')
+  list_display = ('user__first_name', 'service', 'status', 'booking_date', 'number_of_people', 'arrival_time', 'departure_time')
   list_filter = ('status', 'service', 'booking_date')
-  search_fields = ('reservation_name', 'service__title', 'user__email')
+  search_fields = ('id', 'service__title', 'user__email')
   readonly_fields = ('id',)
     
   fieldsets = (
     (None, {
-      'fields': ('id', 'reservation_name', 'service', 'user')
+      'fields': ('id', 'service', 'user')
     }),
     ('Reservation Details', {
       'fields': ('status', 'number_of_people', 'booking_date', 'arrival_time', 'departure_time')
