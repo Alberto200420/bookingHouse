@@ -10,4 +10,4 @@ urlpatterns = [
     path("v1/directory/", include('apps.serviceDirectory.urls')),
     path("v1/reservations/", include('apps.reservations.urls')),
     path("v1/hotel/", include('apps.hotels.urls'))
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
