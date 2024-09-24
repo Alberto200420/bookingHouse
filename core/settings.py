@@ -49,6 +49,7 @@ THIRD_PARTY_APPS = [
     "djoser",
     "corsheaders",
     "storages",
+    'django_extensions',
     # "rest_framework_simplejwt",
     # "rest_framework_simplejwt.token_blacklist",
 ]
@@ -211,3 +212,8 @@ DJOSER = {
 # AUTHENTICATION_BACKENDS = [
 #     'django.contrib.auth.backends.ModelBackend',
 # ]
+
+GRAPH_MODELS = {
+  'all_applications': True,
+  'group_models': True,
+}
