@@ -2,6 +2,8 @@
 ## Backend database structure:
 <img src='./models.png' alt='Booking House Backend (Alberto200420)'/>
 
+## View the [Booking House Front end](https://github.com/Alberto200420/bookingHouse-frontend/tree/mvp)
+
 ## Booking House
 
 **Booking House** is a project that allows hotel guests to access a catalog of services via their smartphones. Guests can explore activities, services, and tours offered by the hotel where they are staying.
@@ -138,4 +140,4 @@ class GetHotelHomePage(APIView):
     return Response(serializer.data)
 ```
 
-### This project is just the MVP of the aplication 
+### This branch is just the MVP of the aplication 
